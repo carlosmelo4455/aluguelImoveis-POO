@@ -21,6 +21,15 @@ public class Address {
         this.cep = cep;
     }
 
+    public Address() {
+        this.street = null;
+        this.imovelNumber = 0;
+        this.cep = null;
+        this.state = null;
+        this.city = null;
+
+    }
+
     public String getStreet() {
         return street;
     }
@@ -48,9 +57,11 @@ public class Address {
     public String getState() {
         return state.toString();
     }
-    public void setState(String state){
+
+    public void setState(String state) {
         this.state = State.valueOf(state);
     }
+
     public String getCep() {
         return cep;
     }
