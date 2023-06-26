@@ -1,3 +1,5 @@
+package aluguel;
+
 import java.util.Scanner;
 
 public class Cadastro {
@@ -9,16 +11,22 @@ public class Cadastro {
 
     public static Imovel cadastroImovel(int tipo) {
         Imovel imovel = null;
-        System.out.println("\n=== Cadastro de Imóvel ===");
+        System.out.println("\n=== aluguel.Cadastro de Imóvel ===");
+
         float iptu = Read.floatInput("Valor do IPTU: ");
+
         String street = Read.stringInput("Nome da rua: ");
+
         int imovelNumber = Read.intInput("Número da casa/prédio: ");
-        scanner.nextLine();
+
         String cep = Read.stringInput("CEP: ");
+
         String stateName = Read.stringInput("Nome do estado: ");
+
         String cityName = Read.stringInput("Nome da cidade: ");
-        System.out.print("Utilização do imóvel: ");
+
         String imovelApplication = Read.stringInput("Utilização do imovel: ");
+
         Address imovelAddress = new Address(street, imovelNumber, cep, cityName, stateName);
         if (tipo == 1) {
             float areaUtil = Read.floatInput("Area util: ");
@@ -44,7 +52,6 @@ public class Cadastro {
         String ownerCep = Read.stringInput("CEP: ");
         String ownerStreet = Read.stringInput("Rua: ");
         int ownerImovelNumber = Read.intInput("Número do imovel: ");
-        scanner.nextLine();
         Address ownerAddress = new Address(ownerStreet, ownerImovelNumber, ownerCep, ownerCity, ownerState);
         owner = new Owner(ownerName, cpf, id, ownerAddress);
         return owner;

@@ -1,4 +1,7 @@
+package aluguel;
+
 import java.util.ArrayList;
+
 public class Condominio {
     private Address address;
     private ArrayList<String> itensLazer;
