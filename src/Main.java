@@ -15,14 +15,12 @@ public class Main {
         Owner selectedOwner = null;
         boolean login = true;
         while (login) {
-            System.out.println("\n=== Selecione a opção: ===\n (1) Cadastrar-se \n (2) Login");
-            String resposta = scanner.nextLine();
+            String resposta = Read.stringInput("\n=== Selecione a opção: ===\n (1) Cadastrar-se \n (2) Login");
             if (resposta.equals("1")) {
-                Owner owner = Cadastro.CadastroOwner();
+                Owner owner = Cadastro.cadastroOwner();
                 listaCadastrados.add(owner);
-                System.out.print("\n=== Qual seu tipo de imovel: ===\n (1) Unidade autonoma \n (2) Unidade compartilhada");
-                int tipo = scanner.nextInt();
-                Imovel imovel = Cadastro.CadastroImovel(tipo);
+                int tipo = Read.intInput("\n=== Qual seu tipo de imovel: ===\n (1) Unidade autonoma \n (2) Unidade compartilhada");
+                Imovel imovel = Cadastro.cadastroImovel(tipo);
                 owner.addImovelToList(imovel);
                 System.out.println("\nCadastro de imóvel e proprietário concluído!");
                 System.out.println("Proprietário cadastrado: " + owner.getName());
@@ -30,8 +28,7 @@ public class Main {
                 System.out.println("\n=== Voltar ao menu principal ===");
             }
             if (resposta.equals("2")) {
-                System.out.print("Digite seu CPF\n");
-                String cpf = scanner.nextLine();
+                String cpf = Read.stringInput("\nDigite seu CPF: ");
                 boolean search = true;
                 for (Owner owner : listaCadastrados) {
                     if (cpf.equalsIgnoreCase(owner.getCpf())) {
@@ -59,9 +56,8 @@ public class Main {
                      """);
             String resposta = scanner.nextLine();
             if (resposta.equals("1")) {
-                System.out.print("\n=== Qual seu tipo de imovel: ===\n (1) Unidade autonoma \n (2) Unidade compartilhada");
-                int tipo = scanner.nextInt();
-                Imovel imovel = Cadastro.CadastroImovel(tipo);
+                int tipo = Read.intInput("\n=== Qual seu tipo de imovel: ===\n (1) Unidade autonoma \n (2) Unidade compartilhada");
+                Imovel imovel = Cadastro.cadastroImovel(tipo);
                 selectedOwner.addImovelToList(imovel);
                 System.out.println("Imóvel cadastrado: " + imovel.toString());
                 System.out.println("\n=== Voltar ao menu principal ===");
