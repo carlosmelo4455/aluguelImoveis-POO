@@ -18,51 +18,11 @@ public class Main {
             System.out.println("\n=== Selecione a opção: ===\n (1) Cadastrar-se \n (2) Login");
             String resposta = scanner.nextLine();
             if (resposta.equals("1")) {
-                System.out.println("\n=== Olá, seja bem vindo, preencha as informações abaixo ===");
-
-                System.out.print("Nome: ");
-                String ownerName = scanner.nextLine();
-                System.out.print("CPF: ");
-                String cpf = scanner.nextLine();
-                System.out.print("RG: ");
-                String id = scanner.nextLine();
-                System.out.print("Preencha seu endereço atual");
-                System.out.print("\nSigla do seu estado: ");
-                String ownerState = scanner.nextLine();
-                System.out.print("cidade: ");
-                String ownerCity = scanner.nextLine();
-                System.out.print("CEP: ");
-                String ownerCep = scanner.nextLine();
-                System.out.print("rua: ");
-                String ownerStreet = scanner.nextLine();
-                System.out.print("Número da casa/prédio: ");
-                int ownerImovelNumber = scanner.nextInt();
-                scanner.nextLine();
-                Address ownerAddress = new Address(ownerStreet, ownerImovelNumber, ownerCep, ownerCity, ownerState);
-                Owner owner = new Owner(ownerName, cpf, id, ownerAddress);
+                Owner owner = Cadastro.CadastroOwner();
                 listaCadastrados.add(owner);
-
-                System.out.println("\n=== Cadastro de Imóvel ===");
-                System.out.print("Valor do IPTU: ");
-                float iptu = scanner.nextFloat();
-                scanner.nextLine();
-                System.out.print("Nome da rua: ");
-                String street = scanner.nextLine();
-                System.out.print("Número da casa/prédio: ");
-                int imovelNumber = scanner.nextInt();
-                scanner.nextLine();
-                System.out.print("CEP: ");
-                String cep = scanner.nextLine();
-                System.out.print("Nome do estado: ");
-                String stateName = scanner.nextLine();
-                System.out.print("Nome da cidade: ");
-                String cityName = scanner.nextLine();
-                System.out.print("Tipo de imóvel: ");
-                String imovelType = scanner.nextLine();
-                System.out.print("Utilização do imóvel: ");
-                String imovelApplication = scanner.nextLine();
-                Address imovelAddress = new Address(street, imovelNumber, cep, cityName, stateName);
-                Imovel imovel = new Imovel(imovelApplication, imovelAddress, imovelType, iptu);
+                System.out.print("\n=== Qual seu tipo de imovel: ===\n (1) Unidade autonoma \n (2) Unidade compartilhada");
+                int tipo = scanner.nextInt();
+                Imovel imovel = Cadastro.CadastroImovel(tipo);
                 owner.addImovelToList(imovel);
                 System.out.println("\nCadastro de imóvel e proprietário concluído!");
                 System.out.println("Proprietário cadastrado: " + owner.getName());
@@ -99,34 +59,16 @@ public class Main {
                      """);
             String resposta = scanner.nextLine();
             if (resposta.equals("1")) {
-                System.out.println("\n=== Cadastro de Imóvel ===");
-                System.out.print("Valor do IPTU: ");
-                float iptu = scanner.nextFloat();
-                scanner.nextLine();
-                System.out.print("Nome da rua: ");
-                String street = scanner.nextLine();
-                System.out.print("Número da casa/prédio: ");
-                int imovelNumber = scanner.nextInt();
-                scanner.nextLine();
-                System.out.print("CEP: ");
-                String cep = scanner.nextLine();
-                System.out.print("Nome do estado: ");
-                String stateName = scanner.nextLine();
-                System.out.print("Nome da cidade: ");
-                String cityName = scanner.nextLine();
-                System.out.print("Tipo de imóvel: ");
-                String imovelType = scanner.nextLine();
-                System.out.print("Utilização do imóvel: ");
-                String imovelApplication = scanner.nextLine();
-                Address imovelAddress = new Address(street, imovelNumber, cep, cityName, stateName);
-                Imovel imovel = new Imovel(imovelApplication, imovelAddress, imovelType, iptu);
+                System.out.print("\n=== Qual seu tipo de imovel: ===\n (1) Unidade autonoma \n (2) Unidade compartilhada");
+                int tipo = scanner.nextInt();
+                Imovel imovel = Cadastro.CadastroImovel(tipo);
                 selectedOwner.addImovelToList(imovel);
                 System.out.println("Imóvel cadastrado: " + imovel.toString());
                 System.out.println("\n=== Voltar ao menu principal ===");
             }
             if (resposta.equals("2")) {
-                System.out.print("\n Que tipo de imovel você gostaria de ver:\n");
-                String type = scanner.nextLine();
+                System.out.print("\n=== Qual tipo de imovel gostaria de consultar?: ===\n (1) Unidade autonoma \n (2) Unidade compartilhada");
+                int type = scanner.nextInt();
                 selectedOwner.showAllImovel(type);
             }
             if (resposta.equals("3")) {

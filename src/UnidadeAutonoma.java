@@ -1,11 +1,13 @@
 public class UnidadeAutonoma extends Imovel {
     private float areaUtil;
     private float areaConstruida;
+    private int type;
 
     public UnidadeAutonoma(Address address, float iptu,String application, float areaUtil, float areaConstruida) {
         super(address, iptu, application);
         this.areaUtil = areaUtil;
         this.areaConstruida = areaConstruida;
+        this.type = 1;
     }
 
     @Override
@@ -45,5 +47,13 @@ public class UnidadeAutonoma extends Imovel {
 
     public void setAreaConstruida(float areaConstruida) {
         this.areaConstruida = areaConstruida;
+    }
+    public int getType() {
+        return type;
+    }
+
+    @Override
+    public String toString() {
+        return "Tipo do imovel: Unidade autonoma / Aplicação: " + getApplication() + "/ iptu: " + "R$ " + getIptu() + "/ endereço: " + "rua " + getAddress().getStreet() + " Nº" + getAddress().getImovelNumber() + " " + getAddress().getCity() + getAddress().getState();
     }
 }

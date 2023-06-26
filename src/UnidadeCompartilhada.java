@@ -1,11 +1,13 @@
 public class UnidadeCompartilhada extends Imovel {
     private String identificacao;
     private Condominio condominio;
+    private int type;
 
     public UnidadeCompartilhada(Address address, float iptu,String application, String identificacao, Condominio condominio) {
         super(address, iptu, application);
         this.identificacao = identificacao;
         this.condominio = condominio;
+        this.type = 2;
     }
 
     @Override
@@ -55,5 +57,12 @@ public class UnidadeCompartilhada extends Imovel {
         this.condominio = condominio;
     }
 
-    // Getters e setters para identificacao e condominio
+    public int getType() {
+        return type;
+    }
+
+    @Override
+    public String toString() {
+        return "Tipo do imovel: Unidade compartilhada / Aplicação: " + getApplication() + "/ iptu: " + "R$ " + getIptu() + "/ endereço: " + "rua " + getAddress().getStreet() + " Nº" + getAddress().getImovelNumber() + " " + getAddress().getCity() + getAddress().getState();
+    }
 }

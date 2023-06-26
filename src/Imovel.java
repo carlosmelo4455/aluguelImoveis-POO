@@ -11,6 +11,10 @@ public abstract class Imovel {
     }
     public abstract float calcularValorReferencia();
     public abstract float calcularValorReferenciaSazonalidade(int indiceSazonalidade);
+
+    @Override
+    public abstract String toString();
+    public abstract int getType();
     public float getIptu() {
         return iptu;
     }
@@ -38,6 +42,7 @@ public abstract class Imovel {
     public Agenda getAgenda() {
         return agenda;
     }
+
 
 }
 /*public class Imovel {

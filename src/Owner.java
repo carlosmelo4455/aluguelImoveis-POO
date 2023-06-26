@@ -57,10 +57,10 @@ public class Owner {
         imovelList.add(imovel);
     }
 
-    public void showAllImovel(String type) {
+    public void showAllImovel(int type) {
         int i = 0;
         for (Imovel imovel : imovelList) {
-            if (imovel.getType().equalsIgnoreCase(type)) {
+            if (imovel.getType() == type) {
                 i += 1;
                 System.out.printf("(" + i + ") " + imovel.toString() + "\n");
             }
