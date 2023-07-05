@@ -10,7 +10,7 @@ import java.util.Date;
 public class Main {
     private static ArrayList<Owner> listaCadastrados;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UsuarioExistenteException {
         listaCadastrados = new ArrayList<>();
         System.out.println("Bem-vindo ao sistema de cadastro de imóveis!");
         Owner selectedOwner = login();
@@ -19,12 +19,17 @@ public class Main {
         }
     }
 
-    private static Owner login() {
+    private static Owner login() throws UsuarioExistenteException {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             String resposta = Read.stringInput("\n=== Selecione a opção: ===\n (1) Cadastrar-se \n (2) Login\n");
             if (resposta.equals("1")) {
                 Owner owner = Cadastro.cadastroOwner();
+                for ( Owner donos : listaCadastrados){
+                    if (donos.getCpf().equalsIgnoreCase(owner.getCpf())) {
+                        throw new UsuarioExistenteException("Proprietário já cadastrado");
+                    }
+                }
                 listaCadastrados.add(owner);
                 int tipo = Read.intInput("\n=== Qual seu tipo de imovel: ===\n (1) Unidade autonoma \n (2) Unidade compartilhada");
                 Imovel imovel = Cadastro.cadastroImovel(tipo);
